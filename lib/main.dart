@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/utils/constants.dart';
-import 'package:movie_app/screens/Home/home_page.dart';
+import 'package:movie_app/presentation/screens/Home/home_page.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 

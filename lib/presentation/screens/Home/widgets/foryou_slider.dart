@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/utils.dart';
+import 'package:movie_app/models/usecase/get_popular.dart';
 
 class ForyouSlider extends StatelessWidget {
   const ForyouSlider({
@@ -9,6 +10,7 @@ class ForyouSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   final myData = GetPopular().getPopularMovies();
     return SizedBox(
       height: 500.h,
       child: ListView.builder(
