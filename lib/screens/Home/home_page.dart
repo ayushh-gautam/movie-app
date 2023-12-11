@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/utils.dart';
 
-import 'package:movie_app/presentation/widgets/customText.dart';
-import 'package:movie_app/presentation/screens/Home/widgets/list.dart';
-import 'package:movie_app/presentation/screens/Home/widgets/searchBar.dart';
+import 'package:movie_app/widgets/customText.dart';
+import 'package:movie_app/screens/Home/widgets/list.dart';
+import 'package:movie_app/screens/Home/widgets/searchBar.dart';
 import 'package:movie_app/utils/constants.dart';
 
 import 'widgets/foryou_slider.dart';
@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           title: MyText(
-            text: 'Hi, melaine',
+            text: 'Hi, ayush',
             fontSize: 35.h,
             fontWeight: FontWeight.w600,
           ).marginOnly(left: 5.h),
@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
             Gap(10.h),
-            (screenWidth <= 500) ? MyGrid() : MyList(),
+            (screenWidth <= 500) ? MyList() : MyGrid(),
             Gap(20),
             Container(
               width: 180,

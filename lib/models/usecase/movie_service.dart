@@ -1,5 +1,5 @@
 import 'package:movie_app/models/movie_model.dart';
-import 'package:movie_app/repo/api.dart';
+import 'package:movie_app/models/repo/api.dart';
 
 class MovieService {
   Api _api = Api();
