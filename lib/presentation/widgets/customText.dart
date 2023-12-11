@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyText extends StatelessWidget {
   String text;
+
   Color? color;
   double? fontSize;
   FontWeight? fontWeight;
@@ -20,6 +21,9 @@ class MyText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      softWrap: true,
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
       style: GoogleFonts.archivo(
           color: color ?? Colors.white,
           fontSize: fontSize ?? 18.sp,
