@@ -10,6 +10,7 @@ import 'package:movie_app/screens/Home/widgets/popular_slider.dart';
 import 'package:movie_app/screens/Home/widgets/searchBar.dart';
 import 'package:movie_app/utils/constants.dart';
 
+import 'widgets/genre_slider.dart';
 import 'widgets/trending_slider.dart';
 
 class HomePage extends StatelessWidget {
@@ -42,7 +43,7 @@ class HomePage extends StatelessWidget {
             Gap(15.h),
             MyText(text: 'Trending', color: kTextSubcolor, fontSize: 25.h),
             Gap(10.h),
-            ForyouSlider(),
+            TrendingSlider(),
             Gap(15.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,16 +53,16 @@ class HomePage extends StatelessWidget {
               ],
             ),
             Gap(10.h),
-            MyList(),
+            PopularSlider(),
             Gap(20),
-            Container(
-              width: 180,
-              height: 150,
-              color: Colors.green,
-              child: Center(
-                child: MyText(text: 'HAHAHAH'),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                MyText(text: 'Upcoming', color: kTextSubcolor, fontSize: 25.h),
+                MyText(text: 'See all', color: kMoreText, fontSize: 22.h),
+              ],
             ),
+            GenreSlider(),
           ],
         ).marginSymmetric(horizontal: 20),
       ),

@@ -5,10 +5,11 @@ import 'package:get/utils.dart';
 import 'package:movie_app/controller/trending_movie_controller.dart';
 import 'package:movie_app/screens/detail/detail_page.dart';
 import 'package:movie_app/widgets/customText.dart';
+import 'package:movie_app/widgets/title_text.dart';
 
-class ForyouSlider extends StatelessWidget {
+class TrendingSlider extends StatelessWidget {
   final TrendingMovieController controller = Get.put(TrendingMovieController());
-  ForyouSlider({super.key});
+  TrendingSlider({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +17,13 @@ class ForyouSlider extends StatelessWidget {
         height: 500.h,
         child: Obx(() {
           if (controller.trendingMovies.value == null) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else {
             return ListView.builder(
                 scrollDirection: Axis.horizontal,
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemCount: controller.trendingMovies.value!.results!.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
@@ -30,7 +31,7 @@ class ForyouSlider extends StatelessWidget {
                       Get.to(DetailPage(
                           myData: controller.trendingMoviedata[index]));
                     },
-                    child: Container(
+                    child: SizedBox(
                       width: 310,
                       height: 400,
                       child: Column(
@@ -45,7 +46,7 @@ class ForyouSlider extends StatelessWidget {
                               fit: BoxFit.fill,
                             ),
                           ).marginAll(10),
-                          MyText(
+                          TitleText(
                             text: controller.trendingMoviedata[index].title!
                                 .split(':')
                                 .first,

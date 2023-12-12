@@ -1,13 +1,14 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/controller/popular_movie_controller.dart';
 import 'package:movie_app/screens/detail/detail_page.dart';
-import 'package:movie_app/widgets/customText.dart';
 import 'package:movie_app/widgets/title_text.dart';
 
-class MyList extends StatelessWidget {
-  MyList({super.key});
+class PopularSlider extends StatelessWidget {
+  PopularSlider({super.key});
 
   PopularMoviesController controller = Get.put(PopularMoviesController());
 
@@ -17,10 +18,10 @@ class MyList extends StatelessWidget {
         height: 358,
         child: Obx(() {
           if (controller.popularMovies.value == null) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           } else {
             return ListView.builder(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: controller.popularMovies.value!.results!.length,
               itemBuilder: ((context, index) {
@@ -38,7 +39,7 @@ class MyList extends StatelessWidget {
                           height: 290,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(25)),
+                                  const BorderRadius.all(Radius.circular(16)),
                               image: DecorationImage(
                                 image: NetworkImage(
                                   'https://image.tmdb.org/t/p/w500${controller.popularMovieData[index].posterPath!}',
@@ -48,17 +49,16 @@ class MyList extends StatelessWidget {
                                 scale: 1,
                               ),
                               gradient: LinearGradient(colors: [
-                                Colors.red.withOpacity(
-                                  0.8,
-                                ),
+                                Colors.red.withOpacity(0.8),
                                 Colors.green
                               ])),
-                        ).marginAll(10)),
+                        ).marginOnly(top: 10, right: 15)),
                     Positioned(
                       left: 15,
                       right: 15,
                       bottom: 0,
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
                               child: Column(
@@ -78,7 +78,7 @@ class MyList extends StatelessWidget {
                                       .first)
                             ],
                           )),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Row(
@@ -90,9 +90,10 @@ class MyList extends StatelessWidget {
                                           .split('.')
                                           .first)
                                   .marginOnly(right: 5),
-                              Icon(
-                                Icons.star,
+                              const Icon(
+                                FontAwesomeIcons.solidStar,
                                 color: Colors.yellow,
+                                size: 18,
                               )
                             ],
                           )

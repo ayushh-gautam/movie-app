@@ -31,9 +31,9 @@ class MovieService {
     }
   }
 
-  Future<Movie?> getTopRatedMovies() async {
+  Future<Movie?> getUpcomingMovies() async {
     try {
-      final response = await _api.sendResponse.get('trending/all/day');
+      final response = await _api.sendResponse.get('movie/upcoming');
       if (response.statusCode == 200) {
         final data = Movie.fromJson(response.data);
         return data;
