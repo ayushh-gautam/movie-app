@@ -6,12 +6,11 @@ import 'package:gap/gap.dart';
 import 'package:get/utils.dart';
 
 import 'package:movie_app/widgets/customText.dart';
-import 'package:movie_app/screens/Home/widgets/list.dart';
+import 'package:movie_app/screens/Home/widgets/popular_slider.dart';
 import 'package:movie_app/screens/Home/widgets/searchBar.dart';
 import 'package:movie_app/utils/constants.dart';
 
-import 'widgets/foryou_slider.dart';
-import 'widgets/grid.dart';
+import 'widgets/trending_slider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -41,8 +40,7 @@ class HomePage extends StatelessWidget {
             Gap(10),
             MySearchBar(),
             Gap(15.h),
-            MyText(
-                text: 'Trending Movies', color: kTextSubcolor, fontSize: 25.h),
+            MyText(text: 'Trending', color: kTextSubcolor, fontSize: 25.h),
             Gap(10.h),
             ForyouSlider(),
             Gap(15.h),
@@ -54,7 +52,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
             Gap(10.h),
-            (screenWidth <= 500) ? MyList() : MyGrid(),
+            MyList(),
             Gap(20),
             Container(
               width: 180,

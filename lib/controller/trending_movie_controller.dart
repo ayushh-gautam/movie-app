@@ -10,10 +10,10 @@ class TrendingMovieController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchPopularMovies();
+    fetchTrendingMovies();
   }
 
-  Future<void> fetchPopularMovies() async {
+  Future<void> fetchTrendingMovies() async {
     Movie? result = await MovieService().getTrendingMovies();
     trendingMovies.value = result;
     trendingMoviedata.addAll(trendingMovies.value!.results!);

@@ -33,7 +33,7 @@ class MovieService {
 
   Future<Movie?> getTopRatedMovies() async {
     try {
-      final response = await _api.sendResponse.get('trending/movie/day');
+      final response = await _api.sendResponse.get('trending/all/day');
       if (response.statusCode == 200) {
         final data = Movie.fromJson(response.data);
         return data;

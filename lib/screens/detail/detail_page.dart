@@ -15,66 +15,69 @@ class DetailPage extends StatelessWidget {
   final Result myData;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kBackgroundcolor,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-              height: 500,
-              width: double.infinity,
-              child: Stack(
-                children: [
-                  Positioned(
-                    child: Image.network(
-                      'https://image.tmdb.org/t/p/w500' + myData.posterPath!,
-                      colorBlendMode: BlendMode.softLight,
-                      color: kBackgroundcolor,
-                      fit: BoxFit.fill,
-                      width: double.infinity,
-                      height: 500,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: kBackgroundcolor,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+                height: 500,
+                width: double.infinity,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      child: Image.network(
+                        'https://image.tmdb.org/t/p/w500' + myData.posterPath!,
+                        colorBlendMode: BlendMode.softLight,
+                        color: kBackgroundcolor,
+                        fit: BoxFit.fill,
+                        width: double.infinity,
+                        height: 500,
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    top: 0,
-                    child: IconButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: Colors.red,
-                          size: 30,
-                        )),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        MyText(
-                          text: 'Leo',
-                          color: Colors.white,
-                          fontSize: 25,
-                        ),
-                        SizedBox(
-                          width: 40,
-                        ),
-                        Icon(
-                          Icons.star,
-                          size: 20,
-                          color: Colors.yellow,
-                        ),
-                      ],
-                    ).marginOnly(right: 15, left: 10),
-                  ),
-                ],
-              )),
-          MyText(
-            text: 'Descritionnnnnn',
-            color: Colors.white,
-          )
-        ],
+                    Positioned(
+                      top: 0,
+                      child: IconButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: Colors.red,
+                            size: 30,
+                          )),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          MyText(
+                            text: myData.title!,
+                            color: Colors.white,
+                            fontSize: 25,
+                          ),
+                          SizedBox(
+                            width: 40,
+                          ),
+                          Icon(
+                            Icons.star,
+                            size: 20,
+                            color: Colors.yellow,
+                          ),
+                        ],
+                      ).marginOnly(right: 15, left: 10),
+                    ),
+                  ],
+                )),
+            MyText(
+              text: myData.overview!,
+              fontSize: 19,
+              color: Colors.white,
+            ).marginAll(14),
+          ],
+        ),
       ),
     );
   }

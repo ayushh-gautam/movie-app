@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MyText extends StatelessWidget {
+class TitleText extends StatelessWidget {
   String text;
 
   Color? color;
   double? fontSize;
   FontWeight? fontWeight;
-  MyText({
+  TitleText({
     Key? key,
     required this.text,
     this.color,
@@ -22,8 +22,8 @@ class MyText extends StatelessWidget {
     return Text(
       text,
       softWrap: true,
-      maxLines: 7,
-      overflow: TextOverflow.ellipsis,
+      maxLines: 1,
+      overflow: TextOverflow.clip,
       style: GoogleFonts.archivo(
           color: color ?? Colors.white,
           fontSize: fontSize ?? 18.sp,
