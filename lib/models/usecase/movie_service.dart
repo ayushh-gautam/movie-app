@@ -15,6 +15,7 @@ class MovieService {
     } catch (e) {
       print('Error in loading trending:$e');
     }
+    return null;
   }
 
   Future<Movie?> getPopularMovies() async {
@@ -29,6 +30,7 @@ class MovieService {
     } catch (e) {
       print('Error in loading popular:$e');
     }
+    return null;
   }
 
   Future<Movie?> getUpcomingMovies() async {
@@ -43,5 +45,6 @@ class MovieService {
     } catch (e) {
       print('Error in loading top rated:$e');
     }
+    return null;
   }
 }

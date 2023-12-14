@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/controller/upcoming_movie_controller.dart';
+import 'package:movie_app/widgets/title_text.dart';
 
-class GenreSlider extends StatelessWidget {
-  GenreSlider({super.key});
+class UpcomingSlider extends StatelessWidget {
+  UpcomingSlider({super.key});
 
   UpcomingMoviesController controller = Get.put(UpcomingMoviesController());
 
@@ -36,7 +37,19 @@ class GenreSlider extends StatelessWidget {
                               Colors.red.withOpacity(0.5),
                               Colors.green,
                             ])),
-                      ).marginOnly(right: 15, top: 10)
+                      ).marginOnly(right: 15, top: 10),
+                      Positioned(
+                          bottom: 0,
+                          child: Row(
+                            children: [
+                              TitleText(
+                                  text: controller
+                                      .upcomingMovieData[index].releaseDate
+                                      .toString()
+                                      .split(' ')
+                                      .first)
+                            ],
+                          ))
                     ],
                   );
                 }));

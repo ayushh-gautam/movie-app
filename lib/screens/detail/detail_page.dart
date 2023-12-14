@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'package:movie_app/utils/constants.dart';
 import 'package:movie_app/widgets/customText.dart';
+import 'package:movie_app/widgets/title_text.dart';
 
 import '../../models/movie_model.dart';
 
@@ -18,59 +20,40 @@ class DetailPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: kBackgroundcolor,
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        body: Stack(
           children: [
-            Container(
-                height: 500,
-                width: double.infinity,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      child: Image.network(
-                        'https://image.tmdb.org/t/p/w500' + myData.posterPath!,
-                        colorBlendMode: BlendMode.softLight,
-                        color: kBackgroundcolor,
-                        fit: BoxFit.fill,
-                        width: double.infinity,
-                        height: 500,
-                      ),
-                    ),
-                    Positioned(
-                      top: 0,
-                      child: IconButton(
-                          onPressed: () {
-                            Get.back();
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.red,
-                            size: 30,
-                          )),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Column(
+              children: [
+                Container(
+                  foregroundDecoration: BoxDecoration(
+                      gradient: LinearGradient(colors: [
+                    kBackgroundcolor.withOpacity(0.8),
+                    Colors.transparent
+                  ], begin: Alignment.bottomCenter, end: Alignment.topCenter)),
+                  height: 550.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: NetworkImage(
+                              'https://image.tmdb.org/t/p/w500${myData.posterPath!}'),
+                          fit: BoxFit.fill)),
+                ),
+                Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
                         children: [
-                          MyText(
-                            text: myData.title!,
-                            color: Colors.white,
-                            fontSize: 25,
-                          ),
-                          SizedBox(
-                            width: 40,
-                          ),
-                          Icon(
-                            Icons.star,
-                            size: 20,
-                            color: Colors.yellow,
-                          ),
+                          Column(
+                            children: [TitleText(text: myData.title!)],
+                          )
                         ],
-                      ).marginOnly(right: 15, left: 10),
-                    ),
-                  ],
-                )),
+                      )
+                    ],
+                  ),
+                ).marginSymmetric(horizontal: 20)
+              ],
+            ),
             MyText(
               text: myData.overview!,
               fontSize: 19,

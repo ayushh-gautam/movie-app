@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
                 MyText(text: 'See all', color: kMoreText, fontSize: 22.h),
               ],
             ),
-            GenreSlider(),
+            UpcomingSlider(),
           ],
         ).marginSymmetric(horizontal: 20),
       ),
