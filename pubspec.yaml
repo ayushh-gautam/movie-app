@@ -45,6 +45,8 @@ dependencies:
   flutter_bloc: ^8.1.3
   font_awesome_icon_class: ^0.0.6
 
+  readmore: ^2.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

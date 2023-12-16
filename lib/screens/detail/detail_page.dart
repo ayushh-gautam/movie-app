@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
+import 'package:movie_app/screens/detail/widget/movie_cast.dart';
 import 'package:movie_app/utils/constants.dart';
-import 'package:movie_app/widgets/customText.dart';
 import 'package:movie_app/widgets/title_text.dart';
+import 'package:readmore/readmore.dart';
 
 import '../../models/movie_model.dart';
 
@@ -22,43 +22,78 @@ class DetailPage extends StatelessWidget {
         backgroundColor: kBackgroundcolor,
         body: Stack(
           children: [
-            Column(
-              children: [
-                Container(
-                  foregroundDecoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                    kBackgroundcolor.withOpacity(0.8),
-                    Colors.transparent
-                  ], begin: Alignment.bottomCenter, end: Alignment.topCenter)),
-                  height: 550.h,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              'https://image.tmdb.org/t/p/w500${myData.posterPath!}'),
-                          fit: BoxFit.fill)),
-                ),
-                Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Column(
-                            children: [TitleText(text: myData.title!)],
-                          )
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    foregroundDecoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [
+                          kBackgroundcolor.withOpacity(0.9),
+                          Colors.transparent
                         ],
-                      )
-                    ],
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter)),
+                    height: 550.h,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(
+                                'https://image.tmdb.org/t/p/w500${myData.posterPath!}'),
+                            fit: BoxFit.fill)),
                   ),
-                ).marginSymmetric(horizontal: 20)
-              ],
+                  Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TitleText(
+                                  text: myData.title!,
+                                  fontSize: 20,
+                                ),
+                                TitleText(
+                                  text: myData.releaseDate
+                                      .toString()
+                                      .split('-')
+                                      .first,
+                                  color: Colors.white38,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+
+                        //MOVIE DETAILS
+
+                        ReadMoreText(
+                          myData.overview!,
+                          trimLines: 3,
+                          trimMode: TrimMode.Line,
+                          moreStyle: const TextStyle(color: kMoreText),
+                          lessStyle: const TextStyle(color: kMoreText),
+                          style: const TextStyle(
+                              color: Colors.white70, fontSize: 16),
+                        ),
+
+                        SizedBox(
+                          height: 10,
+                        ),
+
+                        MovieCast(),
+
+                   
+                      ],
+                    ),
+                  ).marginSymmetric(horizontal: 20)
+                ],
+              ),
             ),
-            MyText(
-              text: myData.overview!,
-              fontSize: 19,
-              color: Colors.white,
-            ).marginAll(14),
           ],
         ),
       ),
