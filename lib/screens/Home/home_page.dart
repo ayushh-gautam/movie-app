@@ -1,13 +1,12 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/utils.dart';
 
-import 'package:movie_app/widgets/customText.dart';
+import 'package:movie_app/widgets/custom_text.dart';
 import 'package:movie_app/screens/Home/widgets/popular_slider.dart';
-import 'package:movie_app/screens/Home/widgets/searchBar.dart';
+import 'package:movie_app/screens/Home/widgets/search_bar.dart';
 import 'package:movie_app/utils/constants.dart';
 
 import 'widgets/genre_slider.dart';
@@ -17,7 +16,7 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
+ 
     return Scaffold(
       appBar: AppBar(
           title: MyText(

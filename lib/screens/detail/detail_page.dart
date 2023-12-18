@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/screens/detail/widget/movie_cast.dart';
 import 'package:movie_app/utils/constants.dart';
@@ -10,7 +11,7 @@ import 'package:readmore/readmore.dart';
 import '../../models/movie_model.dart';
 
 class DetailPage extends StatelessWidget {
-  DetailPage({
+  const DetailPage({
     Key? key,
     required this.myData,
   }) : super(key: key);
@@ -42,7 +43,7 @@ class DetailPage extends StatelessWidget {
                                 'https://image.tmdb.org/t/p/w500${myData.posterPath!}'),
                             fit: BoxFit.fill)),
                   ),
-                  Container(
+                  SizedBox(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -93,17 +94,27 @@ class DetailPage extends StatelessWidget {
                               color: Colors.white70, fontSize: 16),
                         ),
 
-                        SizedBox(
+                      const  SizedBox(
                           height: 10,
                         ),
 
-                        MovieCast(),
+                       const  MovieCast(),
                       ],
                     ),
                   ).marginSymmetric(horizontal: 20)
                 ],
               ),
             ),
+            Positioned(
+                left: 5,
+                top: 8,
+                child: IconButton(
+                  color: Colors.red,
+                  onPressed: () {
+                    Get.back();
+                  },
+                  icon: const Icon(FontAwesomeIcons.arrowLeft),
+                )),
           ],
         ),
       ),

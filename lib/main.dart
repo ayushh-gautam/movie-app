@@ -21,11 +21,11 @@ class MyApp extends StatelessWidget {
       builder: (_, child) {
         return GetMaterialApp(
           theme: ThemeData(
-              appBarTheme: AppBarTheme(backgroundColor: kBackgroundcolor),
+              appBarTheme: const AppBarTheme(backgroundColor: kBackgroundcolor),
               scaffoldBackgroundColor: kBackgroundcolor),
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          home: HomePage(),
+          home: const HomePage(),
         );
       },
     );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/utils.dart';
 import 'package:movie_app/controller/trending_movie_controller.dart';
 import 'package:movie_app/screens/detail/detail_page.dart';
 import 'package:movie_app/widgets/title_text.dart';

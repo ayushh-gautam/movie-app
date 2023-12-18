@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/widgets/customText.dart';
+import 'package:movie_app/widgets/custom_text.dart';
 
 class MovieCast extends StatelessWidget {
   const MovieCast({super.key});

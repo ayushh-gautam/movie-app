@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:movie_app/controller/upcoming_movie_controller.dart';
 import 'package:movie_app/widgets/title_text.dart';
 
+// ignore: must_be_immutable
 class UpcomingSlider extends StatelessWidget {
   UpcomingSlider({super.key});
 
@@ -14,7 +15,7 @@ class UpcomingSlider extends StatelessWidget {
         height: 200,
         child: Obx(() {
           if (controller.upcomingMovies.value == null) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else {

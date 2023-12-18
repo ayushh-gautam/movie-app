@@ -1,8 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'package:movie_app/models/movie_model.dart';
 import 'package:movie_app/models/repo/api.dart';
 
 class MovieService {
-  Api _api = Api();
+  final Api _api = Api();
   Future<Movie?> getTrendingMovies() async {
     try {
       final response = await _api.sendResponse.get('trending/movie/day');
