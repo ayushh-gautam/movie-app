@@ -68,7 +68,19 @@ class DetailPage extends StatelessWidget {
                             )
                           ],
                         ),
-
+                        SizedBox(
+                          height: 60,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 3,
+                            itemBuilder: ((context, index) => Container(
+                                  width: 95,
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.shade600,
+                                      borderRadius: BorderRadius.circular(20)),
+                                ).marginAll(10)),
+                          ),
+                        ),
                         //MOVIE DETAILS
 
                         ReadMoreText(
@@ -86,8 +98,6 @@ class DetailPage extends StatelessWidget {
                         ),
 
                         MovieCast(),
-
-                   
                       ],
                     ),
                   ).marginSymmetric(horizontal: 20)
