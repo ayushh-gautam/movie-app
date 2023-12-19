@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/controller/trending_movie_controller.dart';
 import 'package:movie_app/screens/detail/detail_page.dart';
+import 'package:movie_app/widgets/shimmer_effect.dart';
 import 'package:movie_app/widgets/title_text.dart';
 
 class TrendingSlider extends StatelessWidget {
@@ -15,9 +16,7 @@ class TrendingSlider extends StatelessWidget {
         height: 500.h,
         child: Obx(() {
           if (controller.trendingMovies.value == null) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return Shimmerr(height: 400, width: 310);
           } else {
             return ListView.builder(
                 scrollDirection: Axis.horizontal,

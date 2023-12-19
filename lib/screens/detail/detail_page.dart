@@ -1,13 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/screens/detail/widget/movie_cast.dart';
 import 'package:movie_app/utils/constants.dart';
 import 'package:movie_app/widgets/title_text.dart';
 import 'package:readmore/readmore.dart';
-
 import '../../models/movie_model.dart';
 
 class DetailPage extends StatelessWidget {
@@ -73,10 +72,12 @@ class DetailPage extends StatelessWidget {
                           height: 60,
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
-                            itemCount: 3,
+                            itemCount: 5,
                             itemBuilder: ((context, index) => Container(
                                   width: 95,
                                   decoration: BoxDecoration(
+                                      image: const DecorationImage(
+                                          image: NetworkImage('')),
                                       color: Colors.grey.shade600,
                                       borderRadius: BorderRadius.circular(20)),
                                 ).marginAll(10)),
@@ -94,11 +95,36 @@ class DetailPage extends StatelessWidget {
                               color: Colors.white70, fontSize: 16),
                         ),
 
-                      const  SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
+//casttt
+                        SizedBox(
+                          height: 120,
+                          child: ListView.builder(
+                              itemCount: 5,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: ((context, index) => Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.red,
+                                        borderRadius:
+                                            BorderRadius.circular(14)),
+                                    height: 90,
+                                    width: 100,
+                                  ).marginSymmetric(
+                                      horizontal: 10, vertical: 5))),
+                        ),
 
-                       const  MovieCast(),
+                        //Trailer
+                        TitleText(text: 'Trailer').marginOnly(top: 15),
+
+                        Container(
+                          height: 200,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(18)),
+                        ).marginOnly(bottom: 20, top: 10)
                       ],
                     ),
                   ).marginSymmetric(horizontal: 20)

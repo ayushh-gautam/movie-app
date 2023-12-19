@@ -5,7 +5,9 @@ import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/controller/popular_movie_controller.dart';
 import 'package:movie_app/screens/detail/detail_page.dart';
+import 'package:movie_app/widgets/shimmer_effect.dart';
 import 'package:movie_app/widgets/title_text.dart';
+import 'package:shimmer/shimmer.dart';
 
 class PopularSlider extends StatelessWidget {
   PopularSlider({super.key});
@@ -18,7 +20,10 @@ class PopularSlider extends StatelessWidget {
         height: 358,
         child: Obx(() {
           if (controller.popularMovies.value == null) {
-            return const CircularProgressIndicator();
+            return Shimmerr(
+              height: 290,
+              width: 175,
+            );
           } else {
             return ListView.builder(
               physics: const BouncingScrollPhysics(),
@@ -38,23 +43,20 @@ class PopularSlider extends StatelessWidget {
                           width: 175,
                           height: 290,
                           decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(16)),
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                  'https://image.tmdb.org/t/p/w500${controller.popularMovieData[index].posterPath!}',
-                                ),
-                                fit: BoxFit.fill,
-                                alignment: Alignment.center,
-                                scale: 1,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(16)),
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                'https://image.tmdb.org/t/p/w500${controller.popularMovieData[index].posterPath!}',
                               ),
-                              gradient: LinearGradient(colors: [
-                                Colors.red.withOpacity(0.8),
-                                Colors.green
-                              ])),
+                              fit: BoxFit.fill,
+                              alignment: Alignment.center,
+                              scale: 1,
+                            ),
+                          ),
                         ).marginOnly(top: 10, right: 15)),
                     Positioned(
-                      left: 15,
+                      left: 8,
                       right: 15,
                       bottom: 0,
                       child: Row(

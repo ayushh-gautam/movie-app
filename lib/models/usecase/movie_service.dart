@@ -3,6 +3,7 @@
 import 'package:movie_app/models/movie_model.dart';
 import 'package:movie_app/models/repo/api.dart';
 
+
 class MovieService {
   final Api _api = Api();
   Future<Movie?> getTrendingMovies() async {
@@ -51,5 +52,8 @@ class MovieService {
   }
 
 
+  }
+
+
    
-}
+
