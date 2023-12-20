@@ -4,19 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:get/get.dart';
+import 'package:movie_app/controller/movie_cast_controller.dart';
 import 'package:movie_app/utils/constants.dart';
 import 'package:movie_app/widgets/title_text.dart';
 import 'package:readmore/readmore.dart';
 import '../../models/movie_model.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({
+  DetailPage({
     Key? key,
     required this.myData,
   }) : super(key: key);
   final Result myData;
+
+  var controller = Get.put(MovieCastController());
   @override
   Widget build(BuildContext context) {
+    controller.fetchMovieCast(myData.id!);
     return SafeArea(
       child: Scaffold(
         backgroundColor: kBackgroundcolor,
@@ -54,7 +58,7 @@ class DetailPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 TitleText(
-                                  text: myData.title!,
+                                  text: myData.title!.split(':').first,
                                   fontSize: 20,
                                 ),
                                 TitleText(
@@ -101,18 +105,26 @@ class DetailPage extends StatelessWidget {
 //casttt
                         SizedBox(
                           height: 120,
-                          child: ListView.builder(
-                              itemCount: 5,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: ((context, index) => Container(
-                                    decoration: BoxDecoration(
-                                        color: Colors.red,
-                                        borderRadius:
-                                            BorderRadius.circular(14)),
-                                    height: 90,
-                                    width: 100,
-                                  ).marginSymmetric(
-                                      horizontal: 10, vertical: 5))),
+                          child: GetBuilder<MovieCastController>(
+                              init: MovieCastController(),
+                              builder: (value) {
+                              
+                                return ListView.builder(
+                                    itemCount: value.movieCastData.length,
+                                    scrollDirection: Axis.horizontal,
+                                    itemBuilder: ((context, index) => Container(
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      'https://image.tmdb.org/t/p/w500${value.movieCast.cast[index].profilePath}')),
+                                              color: Colors.red,
+                                              borderRadius:
+                                                  BorderRadius.circular(14)),
+                                          height: 90,
+                                          width: 100,
+                                        ).marginSymmetric(
+                                            horizontal: 10, vertical: 5)));
+                              }),
                         ),
 
                         //Trailer

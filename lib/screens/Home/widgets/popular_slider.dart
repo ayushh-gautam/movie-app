@@ -7,7 +7,6 @@ import 'package:movie_app/controller/popular_movie_controller.dart';
 import 'package:movie_app/screens/detail/detail_page.dart';
 import 'package:movie_app/widgets/shimmer_effect.dart';
 import 'package:movie_app/widgets/title_text.dart';
-import 'package:shimmer/shimmer.dart';
 
 class PopularSlider extends StatelessWidget {
   PopularSlider({super.key});
@@ -51,7 +50,6 @@ class PopularSlider extends StatelessWidget {
                               ),
                               fit: BoxFit.fill,
                               alignment: Alignment.center,
-                              scale: 1,
                             ),
                           ),
                         ).marginOnly(top: 10, right: 15)),

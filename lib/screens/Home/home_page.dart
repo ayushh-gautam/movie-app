@@ -4,14 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/utils.dart';
-import 'package:movie_app/screens/profile/profile_page.dart';
-
 import 'package:movie_app/widgets/custom_text.dart';
 import 'package:movie_app/screens/Home/widgets/popular_slider.dart';
 import 'package:movie_app/screens/Home/widgets/search_bar.dart';
 import 'package:movie_app/utils/constants.dart';
 
-import 'widgets/genre_slider.dart';
+import '../Profile/profile_page.dart';
+import 'widgets/upcoming_slider.dart';
 import 'widgets/trending_slider.dart';
 
 class HomePage extends StatelessWidget {
@@ -29,9 +28,8 @@ class HomePage extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Get.to(ProfilePage(
-                  myImage:
-                      'https://i.pinimg.com/736x/42/c9/3b/42c93be5f2456c26e95e4e1375980132.jpg',
-                ));
+                    myImage:
+                        'https://i.pinimg.com/736x/42/c9/3b/42c93be5f2456c26e95e4e1375980132.jpg'));
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(60),
