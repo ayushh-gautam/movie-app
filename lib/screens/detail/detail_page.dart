@@ -6,6 +6,7 @@ import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/controller/movie_cast_controller.dart';
 import 'package:movie_app/utils/constants.dart';
+import 'package:movie_app/widgets/shimmer_effect.dart';
 import 'package:movie_app/widgets/title_text.dart';
 import 'package:readmore/readmore.dart';
 import '../../models/movie_model.dart';
@@ -72,21 +73,7 @@ class DetailPage extends StatelessWidget {
                             )
                           ],
                         ),
-                        SizedBox(
-                          height: 60,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 5,
-                            itemBuilder: ((context, index) => Container(
-                                  width: 95,
-                                  decoration: BoxDecoration(
-                                      image: const DecorationImage(
-                                          image: NetworkImage('')),
-                                      color: Colors.grey.shade600,
-                                      borderRadius: BorderRadius.circular(20)),
-                                ).marginAll(10)),
-                          ),
-                        ),
+
                         //MOVIE DETAILS
 
                         ReadMoreText(
@@ -103,28 +90,60 @@ class DetailPage extends StatelessWidget {
                           height: 10,
                         ),
 //casttt
+
+                        TitleText(
+                          text: 'Casts',
+                          fontSize: 20,
+                        ),
                         SizedBox(
-                          height: 120,
+                          height: 200,
                           child: GetBuilder<MovieCastController>(
-                              init: MovieCastController(),
-                              builder: (value) {
-                              
+                            init: MovieCastController(),
+                            builder: (value) {
+                              if (value.isLoaded) {
                                 return ListView.builder(
-                                    itemCount: value.movieCastData.length,
-                                    scrollDirection: Axis.horizontal,
-                                    itemBuilder: ((context, index) => Container(
-                                          decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                  image: NetworkImage(
-                                                      'https://image.tmdb.org/t/p/w500${value.movieCast.cast[index].profilePath}')),
-                                              color: Colors.red,
-                                              borderRadius:
-                                                  BorderRadius.circular(14)),
-                                          height: 90,
-                                          width: 100,
-                                        ).marginSymmetric(
-                                            horizontal: 10, vertical: 5)));
-                              }),
+                                  itemCount: value.movieCast?.cast?.length ?? 0,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    final castData =
+                                        value.movieCast!.cast?[index];
+                                    if (castData!.profilePath != null) {
+                                      var imageUrl =
+                                          'https://image.tmdb.org/t/p/w500' +
+                                              castData.profilePath!;
+                                      return Column(
+                                        children: [
+                                          Container(
+                                            clipBehavior: Clip.antiAlias,
+                                            height: 130,
+                                            width: 100,
+                                            decoration: BoxDecoration(
+                                                color: Colors.red,
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            child: Image.network(
+                                              imageUrl,
+                                              height: 100,
+                                              width: 100,
+                                              scale: 1,
+                                              fit: BoxFit.cover,
+                                              alignment: Alignment.center,
+                                            ),
+                                          ).marginAll(10),
+                                          TitleText(text: castData.name!)
+                                              .paddingOnly(left: 10, right: 10),
+                                        ],
+                                      );
+                                    }
+
+                                    return Shimmerr(height: 100, width: 100);
+                                  },
+                                );
+                              } else {
+                                return Shimmerr(height: 130, width: 100);
+                              }
+                            },
+                          ),
                         ),
 
                         //Trailer
@@ -133,6 +152,9 @@ class DetailPage extends StatelessWidget {
                         Container(
                           height: 200,
                           width: double.infinity,
+                          child: Center(
+                            child: TitleText(text: 'Trailer shows here'),
+                          ),
                           decoration: BoxDecoration(
                               color: Colors.green,
                               borderRadius: BorderRadius.circular(18)),

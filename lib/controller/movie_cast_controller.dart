@@ -5,14 +5,14 @@ import 'package:movie_app/models/usecase/cast_model.dart';
 import 'package:movie_app/models/usecase/movie_service.dart';
 
 class MovieCastController extends GetxController {
-  Cast? movieCast = null;
+  Cast? movieCast;
+
+  bool isLoaded = false;
 
   List<CastElement> movieCastData = [];
 
-  
- 
-
   Future<void> fetchMovieCast(int id) async {
+    isLoaded = true;
     Cast? result = await MovieService().getCast(id);
     movieCast = result;
     update();
